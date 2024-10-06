@@ -1,0 +1,34 @@
+<!-- add-pret.component.html -->
+<app-header-admin></app-header-admin>
+<!-- Form to add a new loan request -->
+<div class="demande-pret-form">
+  <h2>Créer une Demande de Prêt</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        [(ngModel)]="email"
+        name="email"
+        class="input-field"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="montant">Montant</label>
+      <input
+        type="number"
+        id="montant"
+        [(ngModel)]="montant"
+        name="montant"
+        class="input-field"
+        required
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Soumettre</button>
+  </form>
+  
+ 

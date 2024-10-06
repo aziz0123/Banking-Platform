@@ -1,0 +1,49 @@
+<div class="user-management-container">
+    <h2 class="title">User Management</h2>
+  
+    <!-- User List -->
+    <h3 class="subtitle">List of Users</h3>
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users" class="user-row">
+          <td>{{ user.nom }} {{ user.prenom }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button class="edit-button" (click)="selectUserForEditing(user.email)">Edit</button>
+            <button class="delete-button" (click)="deleteUser(user.email)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- User Form -->
+    <h3 class="subtitle">Edit User</h3>
+    <form *ngIf="user.email" class="user-form" (ngSubmit)="updateUser()">
+      <div class="form-group">
+        <label for="nom">Name:</label>
+        <input id="nom" [(ngModel)]="user.nom" name="nom" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="prenom">Surname:</label>
+        <input id="prenom" [(ngModel)]="user.prenom" name="prenom" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input id="email" [(ngModel)]="user.email" name="email" type="email" required disabled>
+      </div>
+  
+      <!-- Add other fields if necessary -->
+  
+      <button type="submit" class="submit-button">Update User</button>
+    </form>
+  </div>
+  

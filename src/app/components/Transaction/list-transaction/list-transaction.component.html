@@ -1,0 +1,54 @@
+<app-header-admin></app-header-admin>
+<div class="form-container">
+<div>
+    <h2>Liste des Transactions</h2>
+    
+    <!-- Section de recherche -->
+    <div>
+      <label for="transactionId">Rechercher une transaction par ID:</label>
+      <input type="number" id="transactionId" [(ngModel)]="transactionId" placeholder="Entrez l'ID de la transaction" />
+      <button (click)="getTransactionById(transactionId)">Rechercher</button>
+    </div>
+  
+    <!-- Afficher le message d'erreur si présent -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  
+    <!-- Afficher la transaction sélectionnée si elle est trouvée -->
+    <div *ngIf="selectedTransaction">
+      <h3>Transaction Détails</h3>
+      <p><strong>ID:</strong> {{ selectedTransaction.idTransaction }}</p>
+      <p><strong>Montant:</strong> {{ selectedTransaction.montant }}</p>
+      <p><strong>Date:</strong> {{ selectedTransaction.dateDeTransaction | date }}</p>
+      <p><strong>Compte Source:</strong> {{ selectedTransaction.compteSource?.numeroCompte || 'N/A' }}</p>
+      <p><strong>Compte Destinataire:</strong> {{ selectedTransaction.compteDestinataire?.numeroCompte || 'N/A' }}</p>
+      <p><strong>Type de Transaction:</strong> {{ selectedTransaction.typeTransaction }}</p>
+    </div>
+
+    <!-- Afficher toutes les transactions -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Montant</th>
+          <th>Date</th>
+          <th>Compte Source</th>
+          <th>Compte Destinataire</th>
+          <th>Type de Transaction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{ transaction.idTransaction }}</td>
+          <td>{{ transaction.montant }}</td>
+          <td>{{ transaction.dateDeTransaction | date }}</td>
+          <td>{{ transaction.compteSource?.numeroCompte || 'N/A' }}</td>
+          <td>{{ transaction.compteDestinataire?.numeroCompte || 'N/A' }}</td>
+          <td>{{ transaction.typeTransaction }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+</div>
+

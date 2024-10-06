@@ -1,0 +1,81 @@
+<app-header-admin></app-header-admin>
+<main id="main" class="main">
+  <section class="account-section">
+    <div class="container">
+      <div class="row align-items-center">
+
+        <!-- Email input for searching accounts -->
+        <div class="col-md-8">
+          <input type="email" class="form-control" placeholder="Enter email to search accounts" [(ngModel)]="email">
+        </div>
+
+        <!-- Search button -->
+        <div class="col-md-2">
+          <button class="btn btn-primary" (click)="getComptesByUserEmail()">
+            Search Accounts
+          </button>
+        </div>
+
+        <!-- Add Compte button -->
+        <div class="col-md-2">
+          <button class="btn btn-primary" [routerLink]="['/add-compte']">
+            <i class="fas fa-arrow-right mr-1"></i> Add Compte
+          </button>
+        </div>
+      </div>
+
+      <!-- Display existing accounts -->
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <table *ngIf="comptes.length > 0" class="table table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Owner</th>
+                <th scope="col">Account Number</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Opening Date</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let compte of comptes">
+                <td>
+                  <div class="d-flex align-items-center">
+                    <img class="author-picture rounded-circle icon-md shadow-box mr-2" 
+                        src="/assets/img/avatar/user.png" alt="..." style="width: 30px; height: 30px;">
+                    <p class="my-0">{{ compte.proprietaire?.nom }}</p>
+                  </div>
+                </td>
+                <td>{{ compte.numeroCompte }}</td>
+                <td>{{ compte.solde | currency }}</td>
+                <td>{{ compte.dateOuverture | date }}</td>
+                <td>
+                  <!-- Action buttons -->
+                  <div class="d-flex">
+                    <button class="btn btn-danger btn-sm mr-2" (click)="deleteCompte(compte)">
+                      <i class="fas fa-trash mr-1"></i> Remove
+                    </button>
+                    <button class="btn btn-primary btn-sm mr-2" [routerLink]="['/editCompte', compte.id]">
+                      <i class="fas fa-edit mr-1"></i> Update
+                    </button>
+                    <button class="btn btn-info btn-sm mr-2" [routerLink]="['/detailCompte', compte.id]">
+                      <i class="fas fa-info-circle mr-1"></i> Details
+                    </button>
+                    <button class="btn btn-success btn-sm" (click)="downloadReleve(compte.id)">
+                      <i class="fas fa-download mr-1"></i> Download Releve
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Handle case when no accounts are found -->
+          <div *ngIf="comptes.length === 0 && emailSearched">
+            <p>No accounts found for the email: {{ email }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

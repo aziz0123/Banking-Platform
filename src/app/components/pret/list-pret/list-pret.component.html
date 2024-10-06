@@ -1,0 +1,29 @@
+<app-header-admin></app-header-admin>
+<div class="table-container">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Montant</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let demande of demandesPret">
+          <td>{{ demande.idDemandePret }}</td>
+          <td>{{ demande.user?.email || 'N/A' }}</td>
+          <td>{{ demande.montant }}</td>
+          <td>{{ demande.statusDemande }}</td>
+          <td>
+            <button (click)="changeStatus(demande.idDemandePret!, StatusDemande.APPROUVEE)">Approuver</button>
+            <button (click)="changeStatus(demande.idDemandePret!, StatusDemande.REFUSEE)">Refuser</button>
+            <button (click)="updateMontant(demande.idDemandePret!, (demande.montant || 0) + 100)">Augmenter Montant</button>
+            <button (click)="deleteDemandePret(demande.idDemandePret!)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

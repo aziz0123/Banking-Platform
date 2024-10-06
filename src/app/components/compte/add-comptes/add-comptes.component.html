@@ -1,0 +1,33 @@
+<app-header-admin></app-header-admin>
+<div class="form-container">
+  <form [formGroup]="compteForm" (ngSubmit)="createCompte()">
+    <div>
+      <label for="numeroCompte">Numéro de Compte</label>
+      <input id="numeroCompte" formControlName="numeroCompte" type="text">
+    </div>
+
+    <div>
+      <label for="solde">Solde</label>
+      <input id="solde" formControlName="solde" type="number">
+    </div>
+
+    <div>
+      <label for="typeCompte">Type de Compte</label>
+      <select formControlName="typeCompte">
+        <option *ngFor="let option of typeCompteOptions" [value]="option.value">{{ option.label }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="dateOuverture">Date d'Ouverture</label>
+      <input id="dateOuverture" formControlName="dateOuverture" type="date">
+    </div>
+
+    <div>
+      <label for="email">Email du Propriétaire</label>
+      <input id="email" formControlName="email" type="email">
+    </div>
+
+    <button type="submit">Créer Compte</button>
+  </form>
+</div>

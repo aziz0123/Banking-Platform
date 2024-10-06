@@ -1,0 +1,33 @@
+<app-header-admin></app-header-admin>
+<div class="form-container">
+<div>
+    <h2>Créer une nouvelle transaction</h2>
+    <form (ngSubmit)="createTransaction()">
+      <div>
+        <label for="compteSource">Compte Source:</label>
+        <select id="compteSource" [(ngModel)]="transaction.compteSource" name="compteSource" required>
+          <option *ngFor="let compte of comptes" [ngValue]="compte">{{ compte.numeroCompte }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="compteDestinataire">Compte Destinataire:</label>
+        <select id="compteDestinataire" [(ngModel)]="transaction.compteDestinataire" name="compteDestinataire" required>
+          <option *ngFor="let compte of comptes" [ngValue]="compte">{{ compte.numeroCompte }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="montant">Montant:</label>
+        <input type="number" id="montant" [(ngModel)]="transaction.montant" name="montant" required>
+      </div>
+      <div>
+        <label for="typeTransaction">Type de Transaction:</label>
+        <select id="typeTransaction" [(ngModel)]="transaction.typeTransaction" name="typeTransaction" required>
+          <option *ngFor="let type of typeTransactions | keyvalue" [value]="type.value">{{ type.value }}</option>
+        </select>
+      </div>
+      <button type="submit">Créer Transaction</button>
+    </form>
+  </div>
+</div>
+
+  

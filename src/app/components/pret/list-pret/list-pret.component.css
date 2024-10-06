@@ -1,0 +1,40 @@
+/* Styling for the table */
+.styled-table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 12px;
+    text-align: left;
+  }
+  
+  /* Add border lines */
+  .styled-table th, .styled-table td {
+    border: 1px solid #dddddd;
+    padding: 12px 15px;
+  }
+  
+  /* Styling for the header */
+  .styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  /* Zebra striping */
+  .styled-table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+  }
+  
+  /* Hover effect */
+  .styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Container for positioning */
+  .table-container {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 40vh; /* Adjust height for vertical centering */
+  }
+  

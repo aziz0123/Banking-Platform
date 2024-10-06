@@ -1,0 +1,41 @@
+<form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" [(ngModel)]="registerDto.email" name="email" required>
+    </div>
+    <div>
+      <label for="nom">Nom:</label>
+      <input type="text" [(ngModel)]="registerDto.nom" name="nom" required>
+    </div>
+    <div>
+      <label for="prenom">Prénom:</label>
+      <input type="text" [(ngModel)]="registerDto.prenom" name="prenom" required>
+    </div>
+    <div>
+      <label for="cin">CIN:</label>
+      <input type="text" [(ngModel)]="registerDto.cin" name="cin" required>
+    </div>
+    <div>
+      <label for="password">Mot de passe:</label>
+      <input type="password" [(ngModel)]="registerDto.password" name="password" required>
+    </div>
+    <div>
+      <label for="telephone">Téléphone:</label>
+      <input type="text" [(ngModel)]="registerDto.telephone" name="telephone" required>
+    </div>
+    <div>
+      <label for="dateN">Date de naissance:</label>
+      <input type="date" [(ngModel)]="registerDto.dateN" name="dateN" required>
+    </div>
+    <div>
+      <label for="role">Rôle:</label>
+      <select [(ngModel)]="registerDto.role" name="role" required>
+        <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+      </select>
+    </div>
+    <div *ngIf="registrationError" class="alert alert-danger">
+      {{ registrationError }}
+    </div>
+    <button type="submit">Register</button>
+  </form>
+  

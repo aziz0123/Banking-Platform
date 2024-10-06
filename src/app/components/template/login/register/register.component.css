@@ -1,0 +1,63 @@
+/* Style général du formulaire */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Style des champs du formulaire */
+  div {
+    margin-bottom: 15px;
+  }
+  
+  /* Style des labels */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  /* Style des champs de saisie */
+  input[type="email"],
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Style des boutons */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Style des boutons au survol */
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style des messages d'erreur */
+  .alert-danger {
+    color: #d9534f;
+    background-color: #f2dede;
+    border: 1px solid #d9534f;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+  
